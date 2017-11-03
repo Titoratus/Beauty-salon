@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html {
+  height: 100%; }
+
+body {
+  font-size: 1em;
+  height: 100%;
+  font-family: "Raleway-Regular", sans-serif;
+  position: relative; }
+
+.section-title {
+  font: 2.7em "Nautilus", sans-serif;
+  text-align: center; }
+
+.l-container {
+  max-width: 980px;
+  margin: 0 auto;
+  position: relative; }
+
+.header {
+  height: 86px;
+  background: #fff;
+  width: 100%;
+  position: relative; }
+
+.header__logo {
+  width: 130px;
+  height: 85px;
+  background: url(/img/logo.png) no-repeat;
+  -webkit-background-size: cover;
+          background-size: cover;
+  float: left; }
+
+.header__menu {
+  float: left;
+  margin-left: 80px; }
+
+.header__socials {
+  float: right;
+  font-size: 1em;
+  line-height: 86px; }
+
+.socials__link {
+  margin-right: 10px;
+  background: #000;
+  color: #fff;
+  width: 26px;
+  height: 26px;
+  display: inline-block;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  text-align: center;
+  line-height: 26px;
+  cursor: pointer; }
+
+.menu {
+  list-style: none; }
+
+.menu__elem {
+  display: inline-block;
+  line-height: 86px;
+  margin-left: 30px; }
+
+.menu__link {
+  text-decoration: none;
+  -webkit-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s; }
+  .menu__link:hover {
+    color: #C215A2; }
+
+.title {
+  height: 681px;
+  width: 100%;
+  position: relative;
+  background: url(/img/main_bg.jpg) no-repeat, #fff;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+          background-size: cover;
+  line-height: 100%; }
+
+.title__align {
+  position: absolute;
+  top: 178px; }
+
+.title__name {
+  margin: 0;
+  font-size: 6em;
+  font-family: "Nautilus", sans-serif;
+  color: #fff;
+  vertical-align: middle;
+  line-height: 1.2em; }
+
+.title__descr {
+  background: #fff;
+  color: #222;
+  display: inline-block;
+  padding: 2px 15px;
+  font: 1.2em "Raleway-Regular", sans-serif;
+  -webkit-border-radius: 3px;
+          border-radius: 3px; }
+
+.blocks {
+  position: relative;
+  top: -235px;
+  font-size: 0;
+  text-align: center; }
+
+.block {
+  width: 235px;
+  height: 235px;
+  display: inline-block;
+  vertical-align: top;
+  font: 1rem "Raleway-Regular", sans-serif;
+  position: relative; }
+  .block::before {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #fff;
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    margin-left: -15px; }
+
+.block__title {
+  font-size: 1.6rem;
+  margin-top: 90px; }
+
+.block__link {
+  display: block;
+  margin-top: 40px;
+  text-decoration: none;
+  color: #000; }
+
+.block_image {
+  background: url(https://static.wixstatic.com/media/1e47b2_8f709af9d3744b8c8ac17f27366df93a.jpg/v1/fill/w_235,h_235,al_c,q_80,usm_0.66_1.00_0.01/1e47b2_8f709af9d3744b8c8ac17f27366df93a.webp) no-repeat; }
+
+.block_purple {
+  background: -webkit-radial-gradient(#c7559e, #A44080);
+  background: -o-radial-gradient(#c7559e, #A44080);
+  background: radial-gradient(#c7559e, #A44080); }
+  .block_purple .block__title, .block_purple .block__link {
+    color: #fff; }
+
+.block_black {
+  color: #fff;
+  background: #000; }
+  .block_black .block__title, .block_black .block__link {
+    color: #fff; }
+
+.block_white {
+  background: #fff;
+  color: #000; }
+  .block_white::before {
+    background: #000; }
+
+.review {
+  width: 240px;
+  height: 240px;
+  padding: 0 30px;
+  text-align: center;
+  display: inline-block;
+  line-height: 1.5; }
+
+.review__text {
+  font-size: 1em; }
+
+.review__author {
+  font-weight: bold;
+  margin-top: 15px;
+  display: block; }
+
+.reviews__title {
+  color: #3B2331; }
+
+/*==========  Desktop First  ==========*/
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1200px) {
+  .l-container {
+    max-width: 700px; }
+  .title {
+    background-position: 50% 100%; }
+  .header__menu {
+    margin-left: 40px; } }
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 992px) {
+  .l-container {
+    max-width: 750px; }
+  .header__socials {
+    display: none; }
+  .title {
+    background-position: 36% 100%; }
+  .block_image {
+    display: none; } }
+
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
+  .l-container {
+    max-width: 540px; }
+  .pull {
+    display: block !important;
+    color: #000;
+    font-size: 2em;
+    position: absolute;
+    right: 70px;
+    top: 25px; }
+  .menu {
+    display: none;
+    position: absolute;
+    right: 70px;
+    top: 70px;
+    z-index: 10; }
+  .menu__elem {
+    display: block;
+    background: #eee;
+    height: 54px;
+    padding: 0 35px;
+    line-height: 54px;
+    border-bottom: 1px solid #ccc;
+    margin: 0; } }
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+  .l-container {
+    max-width: 440px; }
+  .title__align {
+    width: 100%;
+    text-align: center; }
+  .title__name {
+    font-size: 4em; }
+  .block_image {
+    display: none; } }
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+  /**/ }

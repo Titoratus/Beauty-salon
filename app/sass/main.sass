@@ -1,0 +1,181 @@
+$main_font: "Raleway-Regular", sans-serif
+$title: "Nautilus", sans-serif
+
+*
+  margin: 0
+  padding: 0
+
+html
+  height: 100%
+
+body
+  font-size: 1em
+  height: 100%
+  font-family: $main_font
+  position: relative
+
+.section-title
+  font: 2.7em $title
+  text-align: center
+
+.l-container
+  max-width: 980px
+  margin: 0 auto
+  position: relative
+
+.header
+  height: 86px
+  background: #fff
+  width: 100%
+  position: relative
+
+.header__logo
+  width: 130px
+  height: 85px
+  background: url(/img/logo.png) no-repeat
+  background-size: cover
+  float: left
+
+.header__menu
+  float: left
+  margin-left: 80px
+
+.header__socials
+  float: right
+  font-size: 1em
+  line-height: 86px
+
+.socials__link
+  margin-right: 10px
+  background: #000
+  color: #fff
+  width: 26px
+  height: 26px
+  display: inline-block
+  border-radius: 50%
+  text-align: center
+  line-height: 26px
+  cursor: pointer
+
+.menu
+  list-style: none
+
+.menu__elem
+  display: inline-block
+  line-height: 86px
+  margin-left: 30px
+
+.menu__link
+  text-decoration: none
+  transition: .3s
+  &:hover
+    color: #C215A2
+
+//Ждём вас
+
+.title
+  height: 681px
+  width: 100%
+  position: relative
+  background: url(/img/main_bg.jpg) no-repeat, #fff
+  background-attachment: fixed
+  background-size: cover
+  line-height: 100%
+
+.title__align
+  position: absolute
+  top: 178px
+
+.title__name
+  margin: 0
+  font-size: 6em
+  font-family: $title
+  color: #fff
+  vertical-align: middle
+  line-height: 1.2em
+
+.title__descr
+  background: #fff
+  color: #222
+  display: inline-block
+  padding: 2px 15px
+  font: 1.2em $main_font
+  border-radius: 3px
+
+//Blocks
+.blocks
+  position: relative
+  top: -235px
+  font-size: 0
+  text-align: center
+
+.block
+  width: 235px
+  height: 235px
+  display: inline-block
+  vertical-align: top
+  font: 1rem $main_font
+  position: relative
+  &::before
+    content: ""
+    display: block
+    width: 30px
+    height: 3px
+    background: #fff
+    position: absolute
+    top: 65px
+    left: 50%
+    margin-left: -15px  
+
+.block__title
+  font-size: 1.6rem
+  margin-top: 90px
+
+.block__link
+  display: block
+  margin-top: 40px
+  text-decoration: none
+  color: #000
+
+.block_image
+  background: url(https://static.wixstatic.com/media/1e47b2_8f709af9d3744b8c8ac17f27366df93a.jpg/v1/fill/w_235,h_235,al_c,q_80,usm_0.66_1.00_0.01/1e47b2_8f709af9d3744b8c8ac17f27366df93a.webp) no-repeat
+
+.block_purple
+  background: radial-gradient(#c7559e, #A44080)
+  .block__title, .block__link
+    color: #fff
+
+.block_black
+  color: #fff
+  background: #000
+  .block__title, .block__link
+    color: #fff  
+
+.block_white
+  background: #fff
+  color: #000
+  &::before
+    background: #000
+
+
+//Отзывы
+.review
+  width: 240px
+  height: 240px
+  padding: 0 30px
+  text-align: center
+  display: inline-block
+  line-height: 1.5
+
+.review__text
+  font-size: 1em
+
+.review__author
+  font-weight: bold
+  margin-top: 15px
+  display: block
+
+.reviews__title
+  color: #3B2331
+
+@import "_media.sass"

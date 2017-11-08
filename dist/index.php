@@ -35,26 +35,33 @@
 	<div class="l-container" data-aos="fade-up">
 		<h2 class="section-title reviews__title">Отзывы</h2>
 		<div class="owl-carousel owl-drag owl-theme">
-			<?php
-				$query = mysqli_query($con, "SELECT * FROM reviews");
-				while($review = mysqli_fetch_array($query)){
-			?>
 			<div class="review">
-				<div class="review__text"><?php echo $review["message"]; ?></div>
-				<a href='<?php echo $review["link"]; ?>' target="_blank" class="review__author"><?php echo $review["author"]; ?></a>
+				<p class="review__text">Это отзыв. Кликните здесь, чтобы отредактировать и написать хороший отзыв о вашей компании и услугах. Пусть клиенты порекомендуют вас посетителям сайта.</p>
+				<span class="review__author">Полина Белова, стилист</span>
 			</div>
-			<?php } ?>
+			<div class="review">
+				<p class="review__text">Приветус</p>
+				<span class="review__author">Полина Белова, стилист</span>				
+			</div>
+			<div class="review">
+				<p class="review__text">Это отзыв. Кликните здесь, чтобы отредактировать и написать хороший отзыв о вашей компании и услугах. Пусть клиенты порекомендуют вас посетителям сайта.</p>
+				<span class="review__author">Полина Белова, стилист</span>				
+			</div>
+			<div class="review">
+				<p class="review__text">Самый замечательный салон красоты!</p>
+				<span class="review__author">Анаа Каренина, педагог</span>				
+			</div>				
 		</div>
 	</div>
 </section>
 <section id="contacts" class="message">
 	<form class="message__form" action="" data-aos="fade-up">
 		<h2 class="section-title form__title">Приходите</h2>
-		<address class="c-address"><?php echo $info["address"]; ?></address>
-		<span class="c-email"><?php echo $info["email"]; ?></span> \
-		<span class="c-phone"><?php echo $info["phone"]; ?></span>
+		<address class="c-address">г. Петрозаводск, ул.Энтузиастов, д. 15</address>
+		<span class="c-email">ludigolf@mail.ru</span> \
+		<span class="c-phone">8 (911) 051-96-92</span>
 		<h5 class="c-worktime">ЧАСЫ РАБОТЫ</h5>
-		<span class="c-hours"><?php echo $info["hours"]; ?></span>
+		<span class="c-hours">ПН—ПТ: 7:00—22:00  \  ​​СБ: 8:00–22:00  \  ВС: 8:00–23:00</span>
 		<div class="message__box">
 			<div class="box__contact">
 				<input type="text" class="box__input" placeholder="Имя" required>

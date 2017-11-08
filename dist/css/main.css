@@ -214,10 +214,10 @@ body {
 
 .review {
   cursor: move;
-  width: 340px;
+  width: 240px;
   padding: 25px 30px;
   padding-top: 100px;
-  text-align: left;
+  text-align: center;
   display: inline-block;
   line-height: 1.5;
   background: #fff;
@@ -243,15 +243,7 @@ body {
   font-weight: bold;
   margin-top: 15px;
   display: block;
-  font-family: "Roboto-Bold", sans-serif;
-  color: #000;
-  text-align: right;
-  -webkit-transition: .25;
-  -o-transition: .25;
-  transition: .25; }
-  .review__author:hover {
-    opacity: .85;
-    text-decoration: underline; }
+  font-family: "Roboto-Bold", sans-serif; }
 
 .reviews__title {
   color: #fff;
@@ -293,27 +285,24 @@ body {
 
 .box__contact {
   display: inline-block;
-  vertical-align: top;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
+  vertical-align: top; }
 
 .box__input {
   display: block;
   background: none;
   padding: 8px;
-  width: 100%;
   color: #fff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   border: 1px solid #cecece;
   font-size: 1em;
-  outline: none;
-  margin-bottom: 10px; }
+  outline: none; }
   .box__input:focus {
     border-color: #f17b36; }
 
+.box__input:not(:first-of-type) {
+  margin-top: 10px; }
+
 .box__message {
-  height: 128px;
+  height: 110px;
   display: block;
   resize: none; }
 
@@ -356,12 +345,6 @@ body {
 .footer__info {
   font-size: .85em; }
 
-.admin-link {
-  display: block;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: .8em;
-  margin-top: 10px; }
-
 .owl-theme .owl-nav [class*=owl-] {
   background: transparent; }
   .owl-theme .owl-nav [class*=owl-]:hover {
@@ -378,237 +361,6 @@ body {
 
 .contact__info {
   margin-bottom: 50px; }
-
-.admin {
-  background: url(../img/admin_bg.jpg) no-repeat;
-  -webkit-background-size: cover;
-          background-size: cover; }
-
-.login {
-  width: 346px;
-  background: #294352;
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  margin-left: -173px;
-  top: 50%;
-  margin-top: -180.5px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 45px; }
-
-.login__title {
-  color: #fff;
-  font: 2em "Nautilus", sans-serif;
-  margin: 0; }
-
-.login__nick, .login__pass, .login__submit {
-  border: 1px solid #1e323d;
-  padding: 0 20px;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.7);
-  font: 1em "Raleway-Regular", sans-serif;
-  height: 44px;
-  display: block;
-  outline: none;
-  margin-top: 20px; }
-  .login__nick:focus, .login__pass:focus, .login__submit:focus {
-    border-color: #4bc5b2; }
-
-.login__submit {
-  background: #4bc5b2;
-  color: rgba(255, 255, 255, 0.85);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  cursor: pointer;
-  border: none;
-  -webkit-transition: .25s;
-  -o-transition: .25s;
-  transition: .25s; }
-  .login__submit:hover {
-    opacity: .85; }
-
-.login__forgot {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.85em;
-  display: block;
-  margin-top: 20px;
-  text-align: left; }
-
-.error {
-  position: absolute;
-  top: -40px;
-  background: #ffcbcb;
-  color: #c11f1f;
-  padding: 8px;
-  border: 1px solid #c11f1f;
-  width: 100%;
-  left: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: none; }
-
-.admin-menu {
-  height: 100%;
-  min-width: 300px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  background: #313447;
-  position: fixed;
-  left: 0;
-  top: 0; }
-
-.elem__link {
-  color: #fff;
-  display: block;
-  padding: 15px 60px;
-  padding-left: 80px;
-  font: 1em "Raleway-Regular", sans-serif;
-  position: relative;
-  color: rgba(255, 255, 255, 0.8); }
-  .elem__link:hover {
-    background: #2c2d3f; }
-  .elem__link::before {
-    content: "";
-    display: block;
-    height: 18px;
-    width: 18px;
-    position: absolute;
-    left: 48px;
-    top: 50%;
-    margin-top: -9px;
-    background: url(../img/admin_icons.png) 50% no-repeat;
-    opacity: .8; }
-
-.elem__link_active {
-  background: #2c2d3f;
-  color: #fff; }
-  .elem__link_active::before {
-    opacity: 1; }
-
-.admin-records::before {
-  background-position: 98% 0; }
-
-.admin-services::before {
-  background-position: 66% 0; }
-
-.admin-reviews::before {
-  background-position: 0 0; }
-
-.admin-contacts::before {
-  background-position: 32% 0; }
-
-.admin-logo {
-  width: 300px;
-  height: 198px;
-  background: url(../img/admin_logo.png) no-repeat;
-  -webkit-background-size: cover;
-          background-size: cover; }
-
-.admin-main {
-  float: left;
-  padding: 43px 170px;
-  margin-left: 300px; }
-
-.info {
-  width: 509px;
-  text-align: center; }
-
-.c-label {
-  display: block;
-  font: 1.05em "Raleway-Medium", sans-serif;
-  margin-bottom: 8px;
-  margin-top: 35px;
-  text-align: left;
-  text-indent: 2px; }
-
-.c-input {
-  border: 1px solid #ccc;
-  background: #fff;
-  padding: 9px 20px;
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
-  outline: none;
-  width: 100%;
-  -webkit-box-shadow: 0 0 15px -5px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 0 15px -5px rgba(0, 0, 0, 0.3);
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.8);
-  resize: none; }
-  .c-input:focus {
-    -webkit-box-shadow: inset 0 0 15px -5px rgba(0, 0, 0, 0.4);
-            box-shadow: inset 0 0 15px -5px rgba(0, 0, 0, 0.4); }
-
-.c-input_small {
-  display: inline-block;
-  margin-left: 30px; }
-
-.c-input_nomargin {
-  margin: 0; }
-
-.c-input-save {
-  background: #49bd5a;
-  color: #fff;
-  font: 1em "Raleway-Medium", sans-serif;
-  padding: 10px 40px;
-  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-          box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  border: 1px solid #349b43;
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
-  letter-spacing: .5px;
-  cursor: pointer;
-  -webkit-transition: .25s;
-  -o-transition: .25s;
-  transition: .25s;
-  outline: none;
-  margin-top: 35px; }
-  .c-input-save:hover {
-    background: #339a42; }
-  .c-input-save:active {
-    -webkit-transform: translateY(2px);
-        -ms-transform: translateY(2px);
-            transform: translateY(2px); }
-
-.success-msg {
-  background: #dff0d8;
-  padding: 15px 25px;
-  color: #468847;
-  font: 1em "Raleway-Medium", sans-serif;
-  display: none;
-  border: 1px solid #cde4c4; }
-
-.review_admin {
-  background: #faf8f9;
-  padding: 22px 30px;
-  border-left: 2px solid #c862a4;
-  margin-bottom: 30px;
-  font-family: "Raleway-Medium", sans-serif;
-  -webkit-box-shadow: 0 5px 35px -20px #000;
-          box-shadow: 0 5px 35px -20px #000;
-  position: relative; }
-
-.review__text_admin {
-  color: #363636;
-  font-size: 1em;
-  line-height: 1.5; }
-
-.review__author_admin {
-  font-style: italic;
-  margin-top: 25px;
-  display: inline-block; }
-
-.review-del {
-  color: #de5757;
-  position: absolute;
-  right: 22px;
-  bottom: 22px;
-  cursor: pointer; }
-  .review-del:hover {
-    color: #b53636; }
 
 /*==========  Desktop First  ==========*/
 /* Large Devices, Wide Screens */
@@ -631,9 +383,7 @@ body {
   .title {
     background-position: 36% 100%; }
   .block_image {
-    display: none; }
-  .review {
-    width: 240px; } }
+    display: none; } }
 
 /* Small Devices, Tablets */
 @media only screen and (max-width: 768px) {
@@ -659,9 +409,7 @@ body {
     padding: 0 35px;
     line-height: 54px;
     border-bottom: 1px solid #ccc;
-    margin: 0; }
-  .review {
-    width: 240px; } }
+    margin: 0; } }
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width: 480px) {
@@ -677,13 +425,7 @@ body {
   .blocks {
     height: 750px; }
   .c-hours {
-    font-size: .9em; }
-  .review {
-    width: 240px; }
-  .box__contact {
-    width: 100%; }
-  .c-hours {
-    font-size: .95em; } }
+    font-size: .9em; } }
 
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 320px) {

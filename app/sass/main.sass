@@ -2,6 +2,7 @@ $main_font: "Raleway-Regular", sans-serif
 $title: "Nautilus", sans-serif
 $extra: "Roboto-Bold", sans-serif
 $medium: "Raleway-Medium", sans-serif
+$service_title: "Raleway-ExtraBold", sans-serif
 
 *
   margin: 0
@@ -200,9 +201,29 @@ body
     background: #000
 
 
+//Галлерея
+.gallery
+  background: #000
+  padding: 100px
+  text-align: center
+  a
+    overflow: hidden
+    display: inline-block
+    width: 200px
+    height: 200px
+    position: relative
+    img
+      transition: .25s
+      width: 300px
+      min-height: 200px
+    &:hover
+      img
+        opacity: .7
+
+
 //Отзывы
 .reviews
-  background: #000
+  background: #b0478a
   padding: 50px 0
   text-align: center
 
@@ -592,5 +613,151 @@ body
   cursor: pointer
   &:hover
     color: #b53636
+
+
+//Услуги
+.section-services
+  background: url(../img/services.jpg) no-repeat
+  background-size: cover
+  background-attachment: fixed
+
+.l-services
+  max-width: 560px
+  margin: 100px auto
+  text-align: right
+  padding: 70px 100px
+  background: #fff
+
+.services
+  text-align: center
+  min-height: 600px
+
+.services__menu
+  list-style: none
+  margin-top: 100px
+
+.hall
+  display: inline-block
+  outline: none
+
+.hall__link
+  font: 1em $extra
+  margin-left: 40px
+  position: relative
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    top: -40px
+    left: 50%
+    width: 36px
+    height: 36px
+    margin-left: -18px
+    background: url(../img/services.png) no-repeat
+    background-size: cover
+
+.hall__men::before
+  background-position: 103% 0
+
+.hall__women::before
+  background-position: 35% 0 
+
+.hall__old::before
+  background-position: 70% 0
+
+.hall__link
+  margin-left: 40px
+  outline: none
+
+.hall__link_active
+  color: #b55891
+  border-bottom: 1px dashed #b55891
+
+.nomargin
+  margin: 0
+
+//вывод услуг
+.service
+  margin-top: 80px
+  color: #272727
+  position: relative
+  text-align: right
+
+.service__title
+  font: 1.5em $service_title
+  text-align: left
+  margin-bottom: 20px
+  line-height: 1.5
+
+.opt
+  display: inline-block
+
+.opt__elem
+  padding: 10px 15px
+  border-bottom: 1px solid #ececec
+  color: #5a5a5a
+  font-family: Roboto Medium
+
+.opt__name
+  text-align: left
+  max-width: 200px
+  line-height: 1.5
+
+.opt__price
+  text-align: center
+
+.enroll
+  background: linear-gradient(#f68937, #e07815)
+  color: #fff
+  padding: 9px 25px
+  border-radius: 4px
+  text-shadow: 0 2px 2px rgba(0,0,0,.15)
+  cursor: pointer
+  font-size: 1em
+  &:hover
+    background: #e07815
+    text-shadow: none
+
+
+//Запись
+.select-month
+  border-collapse: collapse
+  
+  td
+    border: 1px solid #D1D1D1
+    width: 84px
+    height: 64px
+    vertical-align: top
+    box-sizing: border-box
+    padding: 10px
+    font-family: $extra
+    cursor: pointer
+    &:hover
+      box-shadow: inset 0 0 0 1px red
+
+.services-table
+  border-collapse: collapse
+  text-align: left  
+  td, th
+    padding: 15px
+    border: 1px solid #e4e4e4
+    font-family: Arial
+    position: relative
+    box-sizing: border-box
+  .del_opt, .del_serv
+    width: 18px
+    height: 18px
+    background: url(../img/delete.png) no-repeat
+    background-size: cover
+    display: none
+    cursor: pointer
+    position: absolute
+    right: 15px
+    top: 50%
+    margin-top: -9px
+  .option:hover, .service-name:hover
+    background: #eee
+    .del_serv, .del_opt
+      display: inline-block
 
 @import "_media.sass"

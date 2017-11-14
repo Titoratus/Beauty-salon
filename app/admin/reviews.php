@@ -1,9 +1,9 @@
 <?php
-	mail("noxioustoo@yandex.ru", "LOL", "Privet");
-	$page = "Отзывы";
-	include("header.php");
+$page = "Отзывы";
+include("header.php");
 ?>
 <main class="admin-main">
+			<h1 class="section-title">Отзывы</h1>
 			<?php
 				$query = mysqli_query($con, "SELECT * FROM reviews");
 				while($review = mysqli_fetch_array($query)){

@@ -23,7 +23,7 @@ gulp.task('sass', function(){
 
 gulp.task('browser-sync', function(){
 	browserSync.init({
-	    proxy: "localhost/Salon/Beauty-salon.git/app",
+	    proxy: "localhost/Beauty-salon/app",
 	    port: 8000
 	 });	
 	browserSync({
@@ -38,7 +38,12 @@ gulp.task('scripts', function(){
 	return gulp.src([
 		'app/libs/jquery/dist/jquery.min.js',
 		'app/libs/aos/dist/aos.js',
-		'app/libs/owl.carousel/dist/owl.carousel.min.js'
+		'app/libs/owl.carousel/dist/owl.carousel.min.js',
+		'app/libs/jquery-ui/jquery-ui.min.js',
+		'app/libs/lightgallery/dist/js/lightgallery.min.js',
+		'app/libs/lightgallery/dist/js/lg-fullscreen.min.js',
+		'app/libs/lightgallery/dist/js/lg-thumbnail.min.js',
+		'app/libs/lightgallery/dist/js/lg-zoom.min.js'
 	])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())
@@ -51,7 +56,8 @@ gulp.task('css-libs', ['sass'], function(){
 		'app/css/font-awesome.min.css',
 		'app/css/aos.css',
 		'app/css/owl.carousel.min.css',
-		'app/css/owl.theme.default.css'
+		'app/css/owl.theme.default.css',
+		'app/css/lightgallery.min.css'
 	])
 	.pipe(concatCss('libs.min.css'))
 	.pipe(cssnano())

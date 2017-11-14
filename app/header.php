@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="css/main.css">
 	<script src="js/font-loader.js"></script>
 </head>
-<body>
+<body <?php echo $page == "Услуги" ? "class='section-services'" : "" ?>>
 <header class="header">
 	<div class="l-container">
 		<div class="header__logo"></div>
@@ -23,7 +23,7 @@
 			<ul class="menu">
 				<li class="menu__elem"><a class="menu__link <?php echo $page == "main" ? "link_active" : "" ?>" href="index">Главная</a></li>
 				<li class="menu__elem"><a class="menu__link" href="index#services">Услуги</a></li>			
-				<li class="menu__elem"><a class="menu__link" href="">Онлайн-запись</a></li>
+				<li class="menu__elem"><a class="menu__link" href="services">Онлайн-запись</a></li>
 				<li class="menu__elem"><a class="menu__link <?php echo $page == "contact" ? "link_active" : "" ?>" href="contact">Контакты</a></li>
 			</ul>
 		</nav>

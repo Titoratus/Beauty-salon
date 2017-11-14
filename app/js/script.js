@@ -6,6 +6,11 @@ AOS.init({
 });
 
 
+//Галлерея
+$('#aniimated-thumbnials').lightGallery({
+    thumbnail:true
+}); 
+
 //Карусель
 $(document).ready(function(){
   $('.owl-carousel').owlCarousel({
@@ -27,6 +32,15 @@ $(document).ready(function(){
   });
 });
 
+$(function(){
+	$(".services").tabs();
+});
+
+$(document).on("click", ".hall__link", function(){
+	$(".hall__link_active").removeClass("hall__link_active");
+	$(this).addClass("hall__link_active");
+});
+
 //Меню на маленьких экранах
 var show = false;
 $(document).on("click", ".pull", function(){
@@ -40,12 +54,6 @@ $(document).on("click", ".pull", function(){
 		$(".pull").css({"color":"#000"});
 		show = false;
 	}
-});
-
-$(document).on("click", ".menu__elem", function(){
-	$(".menu").hide();
-	$(".pull").css({"color":"#000"});
-	show = false;
 });
 
 //Админка
@@ -110,4 +118,49 @@ $(document).on("submit", ".review-create", function(e){
 	});
 
 	e.preventDefault();
+});
+
+//Записаться
+$(document).on("click", ".enroll", function(){
+	var data = "enroll="+$(this).attr("data-enroll");
+	$.ajax({
+		type: "post",
+		url: "functions.php",
+		data: data,
+		success: function(data) {
+			$(".l-services").html(data);
+		}
+	});
+});
+
+//Удаление опции
+$(document).on("click", ".del_opt", function(){
+	if(confirm("Уверены, что хотите удалить эту опцию?")){
+		var data = "del_opt="+$(this).attr("data-del_opt");
+		$.ajax({
+			type: "post",
+			url: "functions.php",
+			data: data,
+			success: function(data) {
+				window.location.href="services";
+			}
+		});
+	}
+	else return false;
+});
+
+//Удаление услуги
+$(document).on("click", ".del_serv", function(){
+	if(confirm("Все опции услуги полностью удалятся, вы уверены?")){
+		var data = "del_serv="+$(this).attr("data-del_serv");
+		$.ajax({
+			type: "post",
+			url: "functions.php",
+			data: data,
+			success: function(data) {
+				window.location.href="services";
+			}
+		});
+	}
+	else return false;
 });

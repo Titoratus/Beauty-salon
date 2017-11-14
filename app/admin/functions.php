@@ -38,4 +38,16 @@
 		$link = $_POST["rev-link"];
 		$query = mysqli_query($con, "INSERT INTO reviews (`ID`, `author`, `message`, `link`) VALUES (NULL, '$author', '$msg', '$link')");
 	}	
+
+	//Удаление опции
+	if(isset($_POST["del_opt"])){
+		$o_id = $_POST["del_opt"];
+		$query = mysqli_query($con, "DELETE FROM options WHERE o_id='$o_id'");
+	}
+
+	//Удаление услуги
+	if(isset($_POST["del_serv"])){
+		$s_id = $_POST["del_serv"];
+		$query = mysqli_query($con, "DELETE FROM services WHERE ID='$s_id'");
+	}	
 ?>

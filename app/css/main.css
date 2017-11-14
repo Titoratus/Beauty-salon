@@ -207,8 +207,27 @@ body {
   .block_white::before {
     background: #000; }
 
-.reviews {
+.gallery {
   background: #000;
+  padding: 100px;
+  text-align: center; }
+  .gallery a {
+    overflow: hidden;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    position: relative; }
+    .gallery a img {
+      -webkit-transition: .25s;
+      -o-transition: .25s;
+      transition: .25s;
+      width: 300px;
+      min-height: 200px; }
+    .gallery a:hover img {
+      opacity: .7; }
+
+.reviews {
+  background: #b0478a;
   padding: 50px 0;
   text-align: center; }
 
@@ -610,6 +629,156 @@ body {
   .review-del:hover {
     color: #b53636; }
 
+.section-services {
+  background: url(../img/services.jpg) no-repeat;
+  -webkit-background-size: cover;
+          background-size: cover;
+  background-attachment: fixed; }
+
+.l-services {
+  max-width: 560px;
+  margin: 100px auto;
+  text-align: right;
+  padding: 70px 100px;
+  background: #fff; }
+
+.services {
+  text-align: center;
+  min-height: 600px; }
+
+.services__menu {
+  list-style: none;
+  margin-top: 100px; }
+
+.hall {
+  display: inline-block;
+  outline: none; }
+
+.hall__link {
+  font: 1em "Roboto-Bold", sans-serif;
+  margin-left: 40px;
+  position: relative; }
+  .hall__link::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 36px;
+    height: 36px;
+    margin-left: -18px;
+    background: url(../img/services.png) no-repeat;
+    -webkit-background-size: cover;
+            background-size: cover; }
+
+.hall__men::before {
+  background-position: 103% 0; }
+
+.hall__women::before {
+  background-position: 35% 0; }
+
+.hall__old::before {
+  background-position: 70% 0; }
+
+.hall__link {
+  margin-left: 40px;
+  outline: none; }
+
+.hall__link_active {
+  color: #b55891;
+  border-bottom: 1px dashed #b55891; }
+
+.nomargin {
+  margin: 0; }
+
+.service {
+  margin-top: 80px;
+  color: #272727;
+  position: relative;
+  text-align: right; }
+
+.service__title {
+  font: 1.5em "Raleway-ExtraBold", sans-serif;
+  text-align: left;
+  margin-bottom: 20px;
+  line-height: 1.5; }
+
+.opt {
+  display: inline-block; }
+
+.opt__elem {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ececec;
+  color: #5a5a5a;
+  font-family: Roboto Medium; }
+
+.opt__name {
+  text-align: left;
+  max-width: 200px;
+  line-height: 1.5; }
+
+.opt__price {
+  text-align: center; }
+
+.enroll {
+  background: -webkit-gradient(linear, left top, left bottom, from(#f68937), to(#e07815));
+  background: -webkit-linear-gradient(#f68937, #e07815);
+  background: -o-linear-gradient(#f68937, #e07815);
+  background: linear-gradient(#f68937, #e07815);
+  color: #fff;
+  padding: 9px 25px;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  font-size: 1em; }
+  .enroll:hover {
+    background: #e07815;
+    text-shadow: none; }
+
+.select-month {
+  border-collapse: collapse; }
+  .select-month td {
+    border: 1px solid #D1D1D1;
+    width: 84px;
+    height: 64px;
+    vertical-align: top;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 10px;
+    font-family: "Roboto-Bold", sans-serif;
+    cursor: pointer; }
+    .select-month td:hover {
+      -webkit-box-shadow: inset 0 0 0 1px red;
+              box-shadow: inset 0 0 0 1px red; }
+
+.services-table {
+  border-collapse: collapse;
+  text-align: left; }
+  .services-table td, .services-table th {
+    padding: 15px;
+    border: 1px solid #e4e4e4;
+    font-family: Arial;
+    position: relative;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+  .services-table .del_opt, .services-table .del_serv {
+    width: 18px;
+    height: 18px;
+    background: url(../img/delete.png) no-repeat;
+    -webkit-background-size: cover;
+            background-size: cover;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -9px; }
+  .services-table .option:hover, .services-table .service-name:hover {
+    background: #eee; }
+    .services-table .option:hover .del_serv, .services-table .option:hover .del_opt, .services-table .service-name:hover .del_serv, .services-table .service-name:hover .del_opt {
+      display: inline-block; }
+
 /*==========  Desktop First  ==========*/
 /* Large Devices, Wide Screens */
 @media only screen and (max-width: 1200px) {
@@ -661,7 +830,15 @@ body {
     border-bottom: 1px solid #ccc;
     margin: 0; }
   .review {
-    width: 240px; } }
+    width: 240px; }
+  .gallery a {
+    width: 100px;
+    height: 100px; }
+  .hall {
+    display: block;
+    margin-top: 60px; }
+  .hall__link {
+    margin: 0; } }
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width: 480px) {
@@ -683,7 +860,11 @@ body {
   .box__contact {
     width: 100%; }
   .c-hours {
-    font-size: .95em; } }
+    font-size: .95em; }
+  .l-services {
+    padding: 50px 0; }
+  .service__title {
+    text-align: center; } }
 
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 320px) {

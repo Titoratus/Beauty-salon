@@ -11,24 +11,34 @@
 		<div class="l-container">
 		<div class="block block_purple" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300">
 			<h3 class="block__title">Уход</h3>
-			<a href="#" class="block__link">Записаться</a>
+			<a href="services" class="block__link">Записаться</a>
 		</div>
 		<div class="block block_image block-1"></div>
 		<div class="block block_black" data-aos="fade-up">
 			<h3 class="block__title">Макияж</h3>
-			<a href="#" class="block__link">Записаться</a>			
+			<a href="services" class="block__link">Записаться</a>			
 		</div>
 		<div class="block block_image block-2"></div>
 		<div class="block block_image block-3"></div>
 		<div class="block block_white">
 			<h3 class="block__title">Волосы</h3>
-			<a href="#" class="block__link">Записаться</a>			
+			<a href="services" class="block__link">Записаться</a>			
 		</div>
 		<div class="block block_image block-4"></div>
 		<div class="block block_purple">
 			<h3 class="block__title">Ногти</h3>
-			<a href="#" class="block__link">Записаться</a>			
+			<a href="services" class="block__link">Записаться</a>			
 		</div>
+	</div>
+</section>
+<section class="gallery">
+	<h2 class="section-title reviews__title form__title">Галлерея</h2>
+	<div id="aniimated-thumbnials">
+		<?php for($i=1; $i<=9; $i++){ ?>
+		  <a href="img/salon/<?php echo $i; ?>.jpg">
+		    <img src="img/salon/<?php echo $i; ?>.jpg" />
+		  </a>
+		<?php } ?> 
 	</div>
 </section>
 <section class="reviews">

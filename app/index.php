@@ -32,8 +32,8 @@
 	</div>
 </section>
 <section class="gallery">
-	<h2 class="section-title reviews__title form__title">Галлерея</h2>
-	<div id="aniimated-thumbnials">
+	<h2 class="section-title reviews__title form__title" data-aos="fade-up">Галлерея</h2>
+	<div id="aniimated-thumbnials" data-aos="fade-up">
 		<?php for($i=1; $i<=9; $i++){ ?>
 		  <a href="img/salon/<?php echo $i; ?>.jpg">
 		    <img src="img/salon/<?php echo $i; ?>.jpg" />

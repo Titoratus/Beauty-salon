@@ -531,6 +531,10 @@ body {
   padding: 43px 170px;
   margin-left: 300px; }
 
+.admin-main_long {
+  margin-left: 200px;
+  padding-right: 50px; }
+
 .info {
   width: 509px;
   text-align: center; }
@@ -584,13 +588,20 @@ body {
   -o-transition: .25s;
   transition: .25s;
   outline: none;
-  margin-top: 35px; }
+  margin-top: 35px;
+  text-align: center; }
   .c-input-save:hover {
     background: #339a42; }
   .c-input-save:active {
     -webkit-transform: translateY(2px);
         -ms-transform: translateY(2px);
             transform: translateY(2px); }
+
+.c-select {
+  padding: 5px;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+          border-radius: 4px; }
 
 .success-msg {
   background: #dff0d8;
@@ -731,7 +742,8 @@ body {
           border-radius: 4px;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
   cursor: pointer;
-  font-size: 1em; }
+  font-size: 1em;
+  display: inline-block; }
   .enroll:hover {
     background: #e07815;
     text-shadow: none; }
@@ -739,6 +751,7 @@ body {
 .select-month {
   border-collapse: collapse; }
   .select-month td {
+    text-align: left;
     border: 1px solid #D1D1D1;
     width: 84px;
     height: 64px;
@@ -747,14 +760,19 @@ body {
             box-sizing: border-box;
     padding: 10px;
     font-family: "Roboto-Bold", sans-serif;
-    cursor: pointer; }
-    .select-month td:hover {
-      -webkit-box-shadow: inset 0 0 0 1px red;
-              box-shadow: inset 0 0 0 1px red; }
+    cursor: default; }
+    .select-month td:not(.time_active):hover {
+      background: #ffebe4;
+      cursor: pointer; }
 
 .services-table {
   border-collapse: collapse;
-  text-align: left; }
+  text-align: left;
+  margin-bottom: 100px; }
+  .services-table tr {
+    position: relative; }
+    .services-table tr:hover .record__del {
+      display: block; }
   .services-table td, .services-table th {
     padding: 15px;
     border: 1px solid #e4e4e4;
@@ -775,9 +793,133 @@ body {
     top: 50%;
     margin-top: -9px; }
   .services-table .option:hover, .services-table .service-name:hover {
-    background: #eee; }
+    background: #fff2e8; }
     .services-table .option:hover .del_serv, .services-table .option:hover .del_opt, .services-table .service-name:hover .del_serv, .services-table .service-name:hover .del_opt {
       display: inline-block; }
+
+.add-c-input {
+  width: 100%;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  color: #757575;
+  outline: none;
+  margin-top: 35px;
+  padding: 10px 0;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  cursor: pointer;
+  -webkit-transition: .25s;
+  -o-transition: .25s;
+  transition: .25s; }
+  .add-c-input:hover {
+    background: #e6e6e6; }
+
+.options-block {
+  max-width: 550px; }
+
+.enroll-info {
+  padding: 25px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  line-height: 1.75; }
+
+.enroll__title {
+  line-height: 1;
+  font-size: 1.4em; }
+
+.enroll__opt {
+  font-size: 1.2em; }
+
+.enroll__price {
+  background: #e66558;
+  color: #fff;
+  display: inline-block;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  padding: 3px 13px;
+  margin-bottom: 20px; }
+
+.enroll_disabled {
+  opacity: .4; }
+
+.busy {
+  background: #eee;
+  color: #ccc; }
+
+.time-block {
+  display: inline-block;
+  vertical-align: top;
+  width: 150px; }
+
+.time-block:not(:first-child) {
+  margin-left: 20px; }
+
+.time__title {
+  font-size: 1.3em;
+  color: #2d2d2d;
+  vertical-align: top; }
+
+.sel-time {
+  font: 1.1em Arial;
+  vertical-align: top;
+  border: 1px solid #ccc;
+  width: 100%;
+  display: block;
+  padding: 6px 0;
+  text-align: center;
+  margin-top: 20px; }
+
+.time-blocks {
+  text-align: center;
+  margin-top: 50px;
+  display: none; }
+
+.time_active {
+  background: #f68937;
+  color: #fff; }
+
+.sel-time:not(.sel-time_active):hover {
+  cursor: pointer;
+  background: #eee; }
+
+.sel-time_active {
+  background: #f68937;
+  color: #fff;
+  border: 1px solid transparent; }
+
+.record-wrap {
+  text-align: center; }
+
+.link_back {
+  padding: 5px 15px;
+  border: 1px solid #bd2995;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  color: #bd2995;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 35px; }
+  .link_back:hover {
+    background: #bd2995;
+    color: #fff; }
+
+.record__del {
+  display: none;
+  width: 42px;
+  height: 42px;
+  background: url(../img/del_record.png) no-repeat;
+  -webkit-background-size: cover;
+          background-size: cover;
+  position: absolute;
+  top: 50%;
+  margin-top: -21px;
+  left: -42px;
+  cursor: pointer;
+  -webkit-transition: .25s;
+  -o-transition: .25s;
+  transition: .25s; }
+  .record__del:hover {
+    opacity: .6; }
 
 /*==========  Desktop First  ==========*/
 /* Large Devices, Wide Screens */

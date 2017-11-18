@@ -49,5 +49,27 @@
 	if(isset($_POST["del_serv"])){
 		$s_id = $_POST["del_serv"];
 		$query = mysqli_query($con, "DELETE FROM services WHERE ID='$s_id'");
-	}	
+	}
+
+	//Добавление услуги
+	if(isset($_POST["s-name"])){
+		$serv = $_POST["s-name"];
+		$opt_num = $_POST["opt_num"];
+		$serv_type = $_POST["serv-type"];
+		$query = mysqli_query($con, "INSERT INTO services (`ID`, `s_name`, `category`) VALUES (NULL, '$serv', '$serv_type')");
+
+		for($i=1; $i <= $opt_num; $i++){
+			$o_name = "opt-".$i;
+			$o_name = $_POST[$o_name];
+			$o_price = "price-".$i;
+			$o_price = $_POST[$o_price];
+			$query = mysqli_query($con, "INSERT INTO options (`o_id`, `o_name`, `price`, `service`) VALUES (NULL, '$o_name', '$o_price', '$serv')");
+		}
+	}
+
+	//Удаление записи
+	if(isset($_POST["del_rec"])){
+		$rec_id = $_POST["del_rec"];
+		$query = mysqli_query($con, "DELETE FROM records WHERE id='$rec_id'");
+	}
 ?>

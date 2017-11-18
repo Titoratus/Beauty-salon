@@ -525,6 +525,10 @@ body
   padding: 43px 170px
   margin-left: 300px
 
+.admin-main_long
+  margin-left: 200px
+  padding-right: 50px
+
 .info
   width: 509px
   text-align: center
@@ -571,10 +575,16 @@ body
   transition: .25s
   outline: none
   margin-top: 35px
+  text-align: center
   &:hover
     background: #339a42
   &:active
     transform: translateY(2px)
+
+.c-select
+  padding: 5px
+  cursor: pointer
+  border-radius: 4px
 
 .success-msg
   background: #dff0d8
@@ -714,6 +724,7 @@ body
   text-shadow: 0 2px 2px rgba(0,0,0,.15)
   cursor: pointer
   font-size: 1em
+  display: inline-block
   &:hover
     background: #e07815
     text-shadow: none
@@ -724,6 +735,7 @@ body
   border-collapse: collapse
   
   td
+    text-align: left
     border: 1px solid #D1D1D1
     width: 84px
     height: 64px
@@ -731,13 +743,20 @@ body
     box-sizing: border-box
     padding: 10px
     font-family: $extra
-    cursor: pointer
-    &:hover
-      box-shadow: inset 0 0 0 1px red
+    cursor: default
+    &:not(.time_active):hover
+      background: #ffebe4
+      cursor: pointer     
 
 .services-table
   border-collapse: collapse
-  text-align: left  
+  text-align: left
+  margin-bottom: 100px
+  tr
+    position: relative
+    &:hover
+      .record__del
+        display: block
   td, th
     padding: 15px
     border: 1px solid #e4e4e4
@@ -756,8 +775,124 @@ body
     top: 50%
     margin-top: -9px
   .option:hover, .service-name:hover
-    background: #eee
+    background: #fff2e8
     .del_serv, .del_opt
       display: inline-block
 
+.add-c-input
+  width: 100%
+  background: #f9f9f9
+  border: 1px solid #ccc
+  color: #757575
+  outline: none
+  margin-top: 35px
+  padding: 10px 0
+  border-radius: 4px
+  cursor: pointer
+  transition: .25s
+  &:hover
+    background: #e6e6e6
+
+
+.options-block
+  max-width: 550px 
+
+.enroll-info
+  padding: 25px
+  box-sizing: border-box
+  line-height: 1.75
+
+.enroll__title
+  line-height: 1
+  font-size: 1.4em
+
+.enroll__opt
+  font-size: 1.2em
+
+.enroll__price
+  background: #e66558
+  color: #fff
+  display: inline-block
+  border-radius: 4px
+  padding: 3px 13px
+  margin-bottom: 20px
+
+.enroll_disabled
+  opacity: .4
+
+.busy
+  background: #eee
+  color: #ccc
+
+.time-block
+  display: inline-block
+  vertical-align: top
+  width: 150px
+
+.time-block:not(:first-child)
+  margin-left: 20px
+
+.time__title
+  font-size: 1.3em
+  color: #2d2d2d
+  vertical-align: top
+
+.sel-time
+  font: 1.1em Arial
+  vertical-align: top
+  border: 1px solid #ccc
+  width: 100%
+  display: block
+  padding: 6px 0
+  text-align: center
+  margin-top: 20px
+
+.time-blocks
+  text-align: center
+  margin-top: 50px
+  display: none
+
+.time_active
+  background: #f68937
+  color: #fff
+
+.sel-time:not(.sel-time_active):hover
+  cursor: pointer
+  background: #eee
+
+.sel-time_active
+  background: #f68937
+  color: #fff
+  border: 1px solid transparent
+
+
+.record-wrap
+  text-align: center
+
+.link_back
+  padding: 5px 15px
+  border: 1px solid #bd2995
+  border-radius: 4px
+  color: #bd2995
+  cursor: pointer
+  display: inline-block
+  margin-top: 35px
+  &:hover
+    background: #bd2995
+    color: #fff
+
+.record__del
+  display: none
+  width: 42px
+  height: 42px
+  background: url(../img/del_record.png) no-repeat
+  background-size: cover
+  position: absolute
+  top: 50%
+  margin-top: -21px
+  left: -42px
+  cursor: pointer
+  transition: .25s
+  &:hover
+    opacity: .6
 @import "_media.sass"

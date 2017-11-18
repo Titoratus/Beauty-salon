@@ -123,14 +123,17 @@ $(document).on("submit", ".review-create", function(e){
 //Записаться
 $(document).on("click", ".enroll", function(){
 	var data = "enroll="+$(this).attr("data-enroll");
-	$.ajax({
-		type: "post",
-		url: "functions.php",
-		data: data,
-		success: function(data) {
-			$(".l-services").html(data);
-		}
-	});
+	if($(this).attr("data-enroll") == null) { return false; }
+	else {
+		$.ajax({
+			type: "post",
+			url: "functions.php",
+			data: data,
+			success: function(data) {
+				$(".l-services").html(data);
+			}
+		});
+	}
 });
 
 //Удаление опции
@@ -159,6 +162,82 @@ $(document).on("click", ".del_serv", function(){
 			data: data,
 			success: function(data) {
 				window.location.href="services";
+			}
+		});
+	}
+	else return false;
+});
+
+var input_num = 1;
+$(document).on("click", ".add-c-input", function(){
+	input_num++;
+	$(".options-block").append("<div class='c-input_small c-input_nomargin'><label for='opt-"+input_num+"' class='c-label'>Опция "+input_num+"</label><input id='opt-"+input_num+"' name='opt-"+input_num+"' type='text' class='c-input'></div><div class='c-input_small'><label for='price-"+input_num+"' class='c-label'>Стоимость</label><input type='text' class='c-input' id='price-"+input_num+"' name='price-"+input_num+"'></div>");
+});
+
+//Добавление услуги
+$(document).on("submit", "#create-service", function(e){
+	$.ajax({
+		type: "post",
+		url: "functions.php",
+		data: $("#create-service").serialize()+"&opt_num="+input_num,
+		success: function(data) {
+			alert("Услуга успешно добавлена!");
+			window.location.href="services";
+		}
+	});
+	e.preventDefault();
+});
+
+$(document).on("click", ".free", function(){
+	$(".time_active").removeClass("time_active");
+	$(this).addClass("time_active");
+	$(".time-blocks").show();
+	$(".enroll__date").attr("data-date", $(this).attr("data-date"));
+});
+
+$(document).on("click", ".sel-time", function(){
+	$(".sel-time_active").removeClass("sel-time_active");
+	$(this).addClass("sel-time_active");
+	$(".enroll_disabled").removeClass("enroll_disabled");
+	$(".enroll__time").attr("data-time", $(this).attr("data-time"));
+});
+
+
+//Записаться после выбора времени
+$(document).on("click", ".enroll-info .enroll:not(.enroll_disabled)", function(){
+	$.ajax({
+		type: "post",
+		url: "functions.php",
+		data: "service="+$(".enroll__title").attr("data-service")+"&option="+$(".enroll__opt").attr("data-option")+"&date="+$(".enroll__date").attr("data-date")+"&time="+$(".enroll__time").attr("data-time"),
+		success: function(data) {
+			$(".l-services").html(data);
+		}
+	});
+});
+
+//Окончательная запись
+$(document).on("click", ".enroll_end", function(){
+	var client = $("#record").serialize();
+	var all_info = client+"&c_service="+$(".enroll__title").attr("data-service")+"&c_opt="+$(".enroll__opt").attr("data-option")+"&c_date="+$(".enroll__date").attr("data-date")+"&c_time="+$(".enroll__time").attr("data-time");
+	$.ajax({
+		type: "post",
+		url: "functions.php",
+		data: all_info,
+		success: function(data) {
+			$(".l-services").html("<div style='text-align: center;'>Вы успешно записаны!<br><a class='link_back' href='services'>Назад к услугам</a></div>");
+		}
+	});
+});
+
+//Удаление записи
+$(document).on("click", ".record__del", function(){
+	if(confirm("Уверены, что хотите удалить запись?")){
+		$.ajax({
+			type: "post",
+			url: "functions.php",
+			data: "del_rec="+$(this).attr("data-del_rec"),
+			success: function(data) {
+				window.location.href = "records";
 			}
 		});
 	}

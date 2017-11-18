@@ -1,6 +1,19 @@
-<?php if(isset($_POST["enroll"])){ ?>
+<?php include("db.php"); if(isset($_POST["enroll"])){ ?>
+<?php
+  $o_id = $_POST["enroll"];
+  $query = mysqli_query($con, "SELECT * FROM options WHERE o_id='$o_id'");
+  $service_name = mysqli_fetch_array($query);
+?>
 <div class="l-container">
-<h1 class="section-title">Запись</h1>
+<h1 id="enroll-title" class="section-title">Запись</h1>
+<div class="enroll-info">
+  <h2 class="enroll__title" data-service="<?php echo $service_name["service"] ?>"><?php echo $service_name["service"]; ?></h2>
+  <p class="enroll__opt" data-option="<?php echo $service_name["o_name"]; ?>"><?php echo $service_name["o_name"]; ?></p>
+  <p class="enroll__price"><?php echo $service_name["price"]; ?> руб.</p><br>
+  <p class="enroll__date" data-date=""></p>
+  <p class="enroll__time" data-time=""></p>
+  <div class="enroll enroll_disabled">Записаться</div>
+</div>
 <?php
   // Вычисляем число дней в текущем месяце
   $dayofmonth = date('t');
@@ -14,6 +27,7 @@
     // Вычисляем номер дня недели для числа
     $dayofweek = date('w',
                       mktime(0, 0, 0, date('m'), $day_count, date('Y')));
+    $main_date = date('m').date('y');
     // Приводим к числа к формату 1 - понедельник, ..., 6 - суббота
     $dayofweek = $dayofweek - 1;
     if($dayofweek == -1) $dayofweek = 6;
@@ -52,6 +66,12 @@
   // 3. Выводим содержимое массива $week
   // в виде календаря
   // Выводим таблицу
+  $dates = array();
+  $query = mysqli_query($con, "SELECT num FROM weekends");
+  while($row = mysqli_fetch_array($query)){
+    $dates[$row["num"]] = 1;
+  }
+
   echo "<table class='select-month'>";
   for($i = 0; $i < count($week); $i++)
   {
@@ -63,8 +83,8 @@
         // Если имеем дело с субботой и воскресенья
         // подсвечиваем их
         if($j == 5 || $j == 6) 
-             echo "<td><font color=red>".$week[$i][$j]."</font></td>";
-        else echo "<td>".$week[$i][$j]."</td>";
+             echo "<td class='busy'>".$week[$i][$j]."</td>";
+        else { $curr_date = $week[$i][$j].$main_date; if(!isset($dates[$curr_date])) { echo "<td class='free' data-date='$curr_date'>".$week[$i][$j]."</td>"; } else { echo "<td class='busy'>".$week[$i][$j]."</td>"; }}
       }
       else echo "<td>&nbsp;</td>";
     }
@@ -72,8 +92,74 @@
   }
   echo "</table>";
 ?>
+<div class="time-blocks">
+  <div class="time-block">
+    <h2 class="time__title">Утром</h2>
+    <div class="sel-time" data-time="1100">11:00</div>
+    <div class="sel-time" data-time="1130">11:30</div>
+  </div>
+  <div class="time-block">
+    <h2 class="time__title">Днём</h2>
+    <div class="sel-time" data-time="1200">12:00</div>
+    <div class="sel-time" data-time="1230">12:30</div>
+    <div class="sel-time" data-time="1300">13:00</div>
+    <div class="sel-time" data-time="1330">13:30</div>  
+    <div class="sel-time" data-time="1400">14:00</div>
+    <div class="sel-time" data-time="1430">14:30</div>
+    <div class="sel-time" data-time="1500">15:00</div>
+    <div class="sel-time" data-time="1530">15:30</div>   
+    <div class="sel-time" data-time="1600">16:00</div>
+    <div class="sel-time" data-time="1630">16:30</div>     
+  </div>
+  <div class="time-block">
+    <h2 class="time__title">Вечером</h2>
+    <div class="sel-time" data-time="1800">18:00</div>
+    <div class="sel-time" data-time="1830">18:30</div>   
+    <div class="sel-time" data-time="1900">19:00</div>
+    <div class="sel-time" data-time="1930">19:30</div>   
+    <div class="sel-time" data-time="2000">20:00</div>
+    <div class="sel-time" data-time="2030">20:30</div>   
+    <div class="sel-time" data-time="2100">21:00</div> 
+  </div>
+  </div>
 </div>
 <?php
 //Конец ЕСЛИ enroll
+}
+
+
+//Если выбрали время и нажали "Записаться"
+if(isset($_POST["service"])){
+?>
+  <div class="record-wrap">
+    <h1 class="section-title">Запись</h1>
+    <h2 class="enroll__title" data-service="<?php echo $_POST["service"]; ?>"><?php echo $_POST["service"]; ?></h2>
+    <p class="enroll__opt" data-option="<?php echo $_POST["option"]; ?>"><?php echo $_POST["option"]; ?></p>
+    <p class="enroll__date" data-date="<?php echo $_POST["date"]; ?>"><?php if (strlen($_POST["date"]) == 5) { $date = substr_replace($_POST["date"], ".", 1, 0); $date = substr_replace($date, ".", 4, 0); } else { $date = substr_replace($_POST["date"], ".", 2, 0); $date = substr_replace($date, ".", 5, 0); } echo $date; ?></p>
+    <p class="enroll__time" data-time="<?php echo $_POST["time"]; ?>"><?php echo substr_replace($_POST["time"], ":", 2, 0); ?></p>    
+    <h2>Укажите ваши данные</h2>
+    <form action="" id="record" method="POST">
+      <label class="c-label" for="record__name">Имя</label>
+      <input type="text" name="record__name" class="c-input" id="record__name">
+      <label class="c-label" for="record__email">Email</label>
+      <input type="text" name="record__email" class="c-input" id="record__email">
+      <label class="c-label" for="record__phone">Телефон</label>
+      <input type="text" name="record__phone" class="c-input" id="record__phone"> 
+      <input type="text" value="Записаться" class="c-input-save enroll_end">   
+    </form>
+  </div>
+<?php
+}
+
+//Окончательная запись
+if(isset($_POST["record__name"])){
+  $name = $_POST["record__name"];
+  $phone = $_POST["record__phone"];
+  $email = $_POST["record__email"];
+  $serv = $_POST["c_service"];
+  $opt = $_POST["c_opt"];
+  $date = $_POST["c_date"];
+  $time = $_POST["c_time"];
+  $query = mysqli_query($con, "INSERT INTO records (`name`, `phone`, `email`, `service`, `opt`, `date`, `time`) VALUES ('$name', '$phone', '$email', '$serv', '$opt', '$date', '$time')") or die("Не удалось записаться!");
 }
 ?>

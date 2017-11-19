@@ -22,6 +22,7 @@
 		<li class="admin-menu__elem"><a class="elem__link admin-services <?php echo $page == 'Услуги' ? 'elem__link_active' : '' ?>" href="services">Услуги</a></li>
 		<li class="admin-menu__elem"><a class="elem__link admin-reviews <?php echo $page == 'Отзывы' ? 'elem__link_active' : '' ?>" href="reviews">Отзывы</a></li>
 		<li class="admin-menu__elem"><a class="elem__link admin-contacts <?php echo $page == 'Контакты' ? 'elem__link_active' : '' ?>" href="main_info">Контакты</a></li>
+		<li class="admin-menu__elem"><a class="elem__link admin-exit" href="exit">Выйти</a></li>
 	</ul>
 </nav>
 <?php } ?>	

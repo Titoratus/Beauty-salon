@@ -9,7 +9,7 @@
 <div class="enroll-info">
   <h2 class="enroll__title" data-service="<?php echo $service_name["service"] ?>"><?php echo $service_name["service"]; ?></h2>
   <p class="enroll__opt" data-option="<?php echo $service_name["o_name"]; ?>"><?php echo $service_name["o_name"]; ?></p>
-  <p class="enroll__price"><?php echo $service_name["price"]; ?> руб.</p><br>
+  <p class="enroll__price" data-price="<?php echo $service_name["price"]; ?>"><?php echo $service_name["price"]; ?> руб.</p><br>
   <p class="enroll__date" data-date=""></p>
   <p class="enroll__time" data-time=""></p>
   <div class="enroll enroll_disabled">Записаться</div>
@@ -93,35 +93,6 @@
   echo "</table>";
 ?>
 <div class="time-blocks">
-  <div class="time-block">
-    <h2 class="time__title">Утром</h2>
-    <div class="sel-time" data-time="1100">11:00</div>
-    <div class="sel-time" data-time="1130">11:30</div>
-  </div>
-  <div class="time-block">
-    <h2 class="time__title">Днём</h2>
-    <div class="sel-time" data-time="1200">12:00</div>
-    <div class="sel-time" data-time="1230">12:30</div>
-    <div class="sel-time" data-time="1300">13:00</div>
-    <div class="sel-time" data-time="1330">13:30</div>  
-    <div class="sel-time" data-time="1400">14:00</div>
-    <div class="sel-time" data-time="1430">14:30</div>
-    <div class="sel-time" data-time="1500">15:00</div>
-    <div class="sel-time" data-time="1530">15:30</div>   
-    <div class="sel-time" data-time="1600">16:00</div>
-    <div class="sel-time" data-time="1630">16:30</div>     
-  </div>
-  <div class="time-block">
-    <h2 class="time__title">Вечером</h2>
-    <div class="sel-time" data-time="1800">18:00</div>
-    <div class="sel-time" data-time="1830">18:30</div>   
-    <div class="sel-time" data-time="1900">19:00</div>
-    <div class="sel-time" data-time="1930">19:30</div>   
-    <div class="sel-time" data-time="2000">20:00</div>
-    <div class="sel-time" data-time="2030">20:30</div>   
-    <div class="sel-time" data-time="2100">21:00</div> 
-  </div>
-  </div>
 </div>
 <?php
 //Конец ЕСЛИ enroll
@@ -133,10 +104,13 @@ if(isset($_POST["service"])){
 ?>
   <div class="record-wrap">
     <h1 class="section-title">Запись</h1>
-    <h2 class="enroll__title" data-service="<?php echo $_POST["service"]; ?>"><?php echo $_POST["service"]; ?></h2>
-    <p class="enroll__opt" data-option="<?php echo $_POST["option"]; ?>"><?php echo $_POST["option"]; ?></p>
-    <p class="enroll__date" data-date="<?php echo $_POST["date"]; ?>"><?php if (strlen($_POST["date"]) == 5) { $date = substr_replace($_POST["date"], ".", 1, 0); $date = substr_replace($date, ".", 4, 0); } else { $date = substr_replace($_POST["date"], ".", 2, 0); $date = substr_replace($date, ".", 5, 0); } echo $date; ?></p>
-    <p class="enroll__time" data-time="<?php echo $_POST["time"]; ?>"><?php echo substr_replace($_POST["time"], ":", 2, 0); ?></p>    
+    <div class="enroll-info">
+      <h2 class="enroll__title" data-service="<?php echo $_POST["service"]; ?>"><?php echo $_POST["service"]; ?></h2>
+      <p class="enroll__opt" data-option="<?php echo $_POST["option"]; ?>"><?php echo $_POST["option"]; ?></p>
+      <p class="enroll__price"><?php echo $_POST["price"]; ?> руб.</p><br>
+      <p class="enroll__date" data-date="<?php echo $_POST["date"]; ?>"><?php if (strlen($_POST["date"]) == 5) { $date = substr_replace($_POST["date"], ".", 1, 0); $date = substr_replace($date, ".", 4, 0); } else { $date = substr_replace($_POST["date"], ".", 2, 0); $date = substr_replace($date, ".", 5, 0); } echo $date; ?></p>
+      <p class="enroll__time" data-time="<?php echo $_POST["time"]; ?>">в <?php echo substr_replace($_POST["time"], ":", 2, 0); ?></p>    
+    </div>
     <h2>Укажите ваши данные</h2>
     <form action="" id="record" method="POST">
       <label class="c-label" for="record__name">Имя</label>
@@ -161,5 +135,29 @@ if(isset($_POST["record__name"])){
   $date = $_POST["c_date"];
   $time = $_POST["c_time"];
   $query = mysqli_query($con, "INSERT INTO records (`name`, `phone`, `email`, `service`, `opt`, `date`, `time`) VALUES ('$name', '$phone', '$email', '$serv', '$opt', '$date', '$time')") or die("Не удалось записаться!");
+}
+
+if(isset($_POST["selected_day"])){
+  $day = $_POST["selected_day"];
+?>
+<div class="time-block">
+  <h2 class="time__title">Утром</h2>
+  <div class="sel-time <?php echo mysqli_num_rows(mysqli_query($con, "SELECT * FROM records WHERE date='$day' AND time='1100'")) != 0 ? "sel-time_disable" : "" ?>" data-time="1100">11:00</div>
+  <div class="sel-time <?php echo mysqli_num_rows(mysqli_query($con, "SELECT * FROM records WHERE date='$day' AND time='1130'")) != 0 ? "sel-time_disable" : "" ?>" data-time="1130">11:30</div>
+</div>
+<div class="time-block">
+  <h2 class="time__title">Днём</h2>
+  <?php $h = 11; for($i=1; $i<=10; $i++){ if($i % 2 == 0) { $min = "30"; } else { $h++; $min = "00"; } $time = $h.$min; ?>
+    <div class="sel-time <?php echo mysqli_num_rows(mysqli_query($con, "SELECT * FROM records WHERE date='$day' AND time='$time'")) != 0 ? "sel-time_disable" : "" ?>" data-time="<?php echo $h.$min; ?>"><?php echo $h.":".$min; ?></div>
+  <?php } ?>
+</div>
+<div class="time-block">
+  <h2 class="time__title">Вечером</h2>
+  <?php $h = 16; for($i=1; $i<=9; $i++){ if($i % 2 == 0) { $min = "30"; } else { $h++; $min = "00"; } $time = $h.$min; ?>
+    <div class="sel-time <?php echo mysqli_num_rows(mysqli_query($con, "SELECT * FROM records WHERE date='$day' AND time='$time'")) != 0 ? "sel-time_disable" : "" ?>" data-time="<?php echo $h.$min; ?>"><?php echo $h.":".$min; ?></div>
+  <?php } ?>
+</div>
+</div>
+<?php  
 }
 ?>

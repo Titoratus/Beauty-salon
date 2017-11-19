@@ -30,8 +30,9 @@
 	</table>
 	<h2 class="section-title">Записи на сегодня</h2>
 	<?php
-		$curr_date = date('j').date('m').date('Y'); $query = mysqli_query($con, "SELECT * FROM records WHERE date='$curr_date' ORDER BY time ASC");
-		if(mysqli_num_rows($query) == 0) die("<div style='text-align: center; margin-top: 35px;'>Нет записей.</div>");
+		$curr_date = date('j').date('m').date('y'); $query = mysqli_query($con, "SELECT * FROM records WHERE date='$curr_date' ORDER BY time ASC");
+		if(mysqli_num_rows($query) == 0) { echo "<div style='text-align: center; margin-top: 35px;'>Нет записей.</div>"; }
+		else {
 	?>	
 	<table class="services-table">
 		<tr>
@@ -55,6 +56,6 @@
 			<td><?php if (strlen($row["date"]) == 5) { $date = substr_replace($row["date"], ".", 1, 0); $date = substr_replace($date, ".", 4, 0); } else { $date = substr_replace($row["date"], ".", 2, 0); $date = substr_replace($date, ".", 5, 0); } echo $date; ?></td>
 			<td><?php echo substr_replace($row["time"], ":", 2, 0); ?></td>
 		</tr>
-		<?php } ?>	
+		<?php } } ?>
 </main>
 <?php include("footer.php"); ?>

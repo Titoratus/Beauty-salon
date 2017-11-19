@@ -193,9 +193,17 @@ $(document).on("click", ".free", function(){
 	$(this).addClass("time_active");
 	$(".time-blocks").show();
 	$(".enroll__date").attr("data-date", $(this).attr("data-date"));
+	$.ajax({
+		type: "post",
+		url: "functions.php",
+		data: "selected_day="+$(this).attr("data-date"),
+		success: function(data) {
+			$(".time-blocks").html(data);
+		}
+	});
 });
 
-$(document).on("click", ".sel-time", function(){
+$(document).on("click", ".sel-time:not(.sel-time_disable)", function(){
 	$(".sel-time_active").removeClass("sel-time_active");
 	$(this).addClass("sel-time_active");
 	$(".enroll_disabled").removeClass("enroll_disabled");
@@ -208,7 +216,7 @@ $(document).on("click", ".enroll-info .enroll:not(.enroll_disabled)", function()
 	$.ajax({
 		type: "post",
 		url: "functions.php",
-		data: "service="+$(".enroll__title").attr("data-service")+"&option="+$(".enroll__opt").attr("data-option")+"&date="+$(".enroll__date").attr("data-date")+"&time="+$(".enroll__time").attr("data-time"),
+		data: "service="+$(".enroll__title").attr("data-service")+"&option="+$(".enroll__opt").attr("data-option")+"&date="+$(".enroll__date").attr("data-date")+"&time="+$(".enroll__time").attr("data-time")+"&price="+$(".enroll__price").attr("data-price"),
 		success: function(data) {
 			$(".l-services").html(data);
 		}
@@ -224,7 +232,7 @@ $(document).on("click", ".enroll_end", function(){
 		url: "functions.php",
 		data: all_info,
 		success: function(data) {
-			$(".l-services").html("<div style='text-align: center;'>Вы успешно записаны!<br><a class='link_back' href='services'>Назад к услугам</a></div>");
+			$(".l-services").html("<div class='success'></div><div style='text-align: center;'>Вы успешно записаны!<br><a class='link_back' href='services'>Назад к услугам</a></div>");
 		}
 	});
 });
@@ -242,4 +250,9 @@ $(document).on("click", ".record__del", function(){
 		});
 	}
 	else return false;
+});
+
+//Выход
+$(document).on("click", ".admin-exit", function(){
+	if(!confirm("Вы уверены, что хотите выйти?")) return false;
 });

@@ -508,16 +508,20 @@ body {
     opacity: 1; }
 
 .admin-records::before {
-  background-position: 98% 0; }
+  background-position: -55px 0; }
 
 .admin-services::before {
-  background-position: 66% 0; }
+  background-position: -37px 0; }
 
 .admin-reviews::before {
   background-position: 0 0; }
 
 .admin-contacts::before {
-  background-position: 32% 0; }
+  background-position: -18px 0; }
+
+.admin-exit::before {
+  background-position: -74px 0;
+  opacity: .3; }
 
 .admin-logo {
   width: 300px;
@@ -821,11 +825,20 @@ body {
   padding: 25px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  line-height: 1.75; }
+  line-height: 1.75;
+  background: #f8c9a842;
+  display: inline-block;
+  padding: 25px 35px;
+  border: 1px solid #f3d8c5;
+  text-align: center;
+  margin-bottom: 35px;
+  width: 100%; }
 
 .enroll__title {
   line-height: 1;
-  font-size: 1.4em; }
+  font-weight: normal;
+  font: 1.4em "Raleway-ExtraBold", sans-serif;
+  color: #404040; }
 
 .enroll__opt {
   font-size: 1.2em; }
@@ -837,7 +850,14 @@ body {
   -webkit-border-radius: 4px;
           border-radius: 4px;
   padding: 3px 13px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  margin-top: 15px; }
+
+.enroll__date, .enroll__time {
+  display: inline-block;
+  font: 1.2em Arial;
+  margin-top: 15px;
+  color: #404040; }
 
 .enroll_disabled {
   opacity: .4; }
@@ -869,10 +889,14 @@ body {
   text-align: center;
   margin-top: 20px; }
 
+.sel-time_disable {
+  color: #ccc;
+  background: #eee;
+  cursor: default !important; }
+
 .time-blocks {
   text-align: center;
-  margin-top: 50px;
-  display: none; }
+  margin-top: 50px; }
 
 .time_active {
   background: #f68937;
@@ -920,6 +944,36 @@ body {
   transition: .25s; }
   .record__del:hover {
     opacity: .6; }
+
+@-webkit-keyframes mymove {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes mymove {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+.success {
+  width: 50px;
+  height: 50px;
+  background: url(../img/success.png) no-repeat;
+  -webkit-animation: mymove 1s;
+          animation: mymove 1s;
+  margin: 0 auto;
+  margin-bottom: 35px;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1; }
+
+.admin-exit {
+  color: rgba(255, 255, 255, 0.3); }
 
 /*==========  Desktop First  ==========*/
 /* Large Devices, Wide Screens */

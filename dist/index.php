@@ -11,57 +11,60 @@
 		<div class="l-container">
 		<div class="block block_purple" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300">
 			<h3 class="block__title">Уход</h3>
-			<a href="#" class="block__link">Записаться</a>
+			<a href="services" class="block__link">Записаться</a>
 		</div>
 		<div class="block block_image block-1"></div>
 		<div class="block block_black" data-aos="fade-up">
 			<h3 class="block__title">Макияж</h3>
-			<a href="#" class="block__link">Записаться</a>			
+			<a href="services" class="block__link">Записаться</a>			
 		</div>
 		<div class="block block_image block-2"></div>
 		<div class="block block_image block-3"></div>
 		<div class="block block_white">
 			<h3 class="block__title">Волосы</h3>
-			<a href="#" class="block__link">Записаться</a>			
+			<a href="services" class="block__link">Записаться</a>			
 		</div>
 		<div class="block block_image block-4"></div>
 		<div class="block block_purple">
 			<h3 class="block__title">Ногти</h3>
-			<a href="#" class="block__link">Записаться</a>			
+			<a href="services" class="block__link">Записаться</a>			
 		</div>
+	</div>
+</section>
+<section class="gallery">
+	<h2 class="section-title reviews__title form__title" data-aos="fade-up">Галлерея</h2>
+	<div id="aniimated-thumbnials" data-aos="fade-up">
+		<?php for($i=1; $i<=9; $i++){ ?>
+		  <a href="img/salon/<?php echo $i; ?>.jpg">
+		    <img src="img/salon/<?php echo $i; ?>.jpg" />
+		  </a>
+		<?php } ?> 
 	</div>
 </section>
 <section class="reviews">
 	<div class="l-container" data-aos="fade-up">
 		<h2 class="section-title reviews__title">Отзывы</h2>
 		<div class="owl-carousel owl-drag owl-theme">
+			<?php
+				$query = mysqli_query($con, "SELECT * FROM reviews");
+				while($review = mysqli_fetch_array($query)){
+			?>
 			<div class="review">
-				<p class="review__text">Это отзыв. Кликните здесь, чтобы отредактировать и написать хороший отзыв о вашей компании и услугах. Пусть клиенты порекомендуют вас посетителям сайта.</p>
-				<span class="review__author">Полина Белова, стилист</span>
+				<div class="review__text"><?php echo $review["message"]; ?></div>
+				<a href='<?php echo $review["link"]; ?>' target="_blank" class="review__author"><?php echo $review["author"]; ?></a>
 			</div>
-			<div class="review">
-				<p class="review__text">Приветус</p>
-				<span class="review__author">Полина Белова, стилист</span>				
-			</div>
-			<div class="review">
-				<p class="review__text">Это отзыв. Кликните здесь, чтобы отредактировать и написать хороший отзыв о вашей компании и услугах. Пусть клиенты порекомендуют вас посетителям сайта.</p>
-				<span class="review__author">Полина Белова, стилист</span>				
-			</div>
-			<div class="review">
-				<p class="review__text">Самый замечательный салон красоты!</p>
-				<span class="review__author">Анаа Каренина, педагог</span>				
-			</div>				
+			<?php } ?>
 		</div>
 	</div>
 </section>
 <section id="contacts" class="message">
 	<form class="message__form" action="" data-aos="fade-up">
 		<h2 class="section-title form__title">Приходите</h2>
-		<address class="c-address">г. Петрозаводск, ул.Энтузиастов, д. 15</address>
-		<span class="c-email">ludigolf@mail.ru</span> \
-		<span class="c-phone">8 (911) 051-96-92</span>
+		<address class="c-address"><?php echo $info["address"]; ?></address>
+		<span class="c-email"><?php echo $info["email"]; ?></span> \
+		<span class="c-phone"><?php echo $info["phone"]; ?></span>
 		<h5 class="c-worktime">ЧАСЫ РАБОТЫ</h5>
-		<span class="c-hours">ПН—ПТ: 7:00—22:00  \  ​​СБ: 8:00–22:00  \  ВС: 8:00–23:00</span>
+		<span class="c-hours"><?php echo $info["hours"]; ?></span>
 		<div class="message__box">
 			<div class="box__contact">
 				<input type="text" class="box__input" placeholder="Имя" required>

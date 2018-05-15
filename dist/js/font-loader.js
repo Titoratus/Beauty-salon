@@ -3,3 +3,5 @@ function loadFont(a,b,c,d){function e(){if(!window.FontFace)return!1;var a=new F
 loadFont('Raleway-Regular', 'css/Raleway-Regular.css');
 loadFont('Lobster', 'css/Nautilus.css');
 loadFont('Roboto-Bold', 'css/Roboto-Bold.css');
+loadFont('Raleway-Medium', 'css/Raleway-Medium.css');
+loadFont('Raleway-ExtraBold', 'css/Raleway-ExtraBold.css');
